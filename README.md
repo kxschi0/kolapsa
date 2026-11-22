@@ -4,15 +4,25 @@ About the assets:
 The assets were originally filipino-themed. Thanks to combined feedbacks of testers and other game developers, kolapsa now also accept other assets and organize them using the same WFC algorithm. However, our demo assets are inspired from filipino-themed streets.
 
 Instructions:
+
 (1) Download as zip
+
 (2) Extract
+
 (3) Drag ONLY the addons folder inside kolapsa to your chosen godot project
+
 (4) Got project settings -> plugin -> check wfc city gen
+
 (5) Start your usual scene, create a 3D node.
+
 (6) At the bottom, a new dock named city generator would appear
+
 (7) Click your Node 3D then click +Add city generator
+
 (8) Place assets in Ground, Middle, and Roof by clicking add asset and choosing from the asset folder.
+
 (9) If you want the middle buildings to appear organized,  you can assign A, B, C, D in the dropdown section.
+
 (10) Tweak your settings to your liking and click generate.
 
 
