@@ -47,7 +47,7 @@ const TILES_NODE := "KolapsaTiles" # every generated tile lives under this node
 @export var roof_scene: PackedScene
 @export var levels: int = 4
 ## Shift every building (set Y to lift buildings on top of the floor tile).
-@export var origin_offset: Vector3 = Vector3(0, 1, 0)
+@export var origin_offset: Vector3 = Vector3(0, 0.6, 0)
 
 @export_group("Building weights")
 @export var roof: float = 3.0
