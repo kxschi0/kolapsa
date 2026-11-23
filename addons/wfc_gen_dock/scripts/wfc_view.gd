@@ -10,6 +10,7 @@ var wave: Dictionary
 var show_entropy: bool
 var origin_offset: Vector3
 var views: Dictionary = {}
+var _fits: Dictionary = {} # asset + mode -> the transform that fits it to one block (measured once)
 var body_kind: int = TileBody.NONE # TileBody.STATIC or TileBody.RIGID
 var with_collision: bool = false
 
@@ -41,7 +42,8 @@ func update_cell(cell: Vector3i) -> void:
 		elif t["bottom"] == "ground":
 			folder = "GroundFloors"
 		var label_text := "%s_L%d_x%d_z%d" % [scene.resource_path.get_file().get_basename(), cell.y, cell.x, cell.z]
-		var node := spawner.spawn(scene, folder, label_text, body_kind, with_collision)
+		var mode := BlockFit.SLAB if t["name"] == "roof" else BlockFit.FILL
+		var node := spawner.spawn(scene, folder, label_text, body_kind, with_collision, _fit_for(scene, mode))
 		node.position = pos
 		node.rotation_degrees.y = 90.0 * float(t["rot"])
 		views[cell] = node
@@ -55,6 +57,15 @@ func update_cell(cell: Vector3i) -> void:
 		spawner.add_temporary(label, "EntropyLabels", "Entropy_L%d_x%d_z%d" % [cell.y, cell.x, cell.z])
 		label.position = pos
 		views[cell] = label
+
+# How the asset is scaled and shifted to fill one block. Measured once per asset, then reused.
+func _fit_for(scene: PackedScene, mode: int) -> Variant:
+	if body_kind == TileBody.NONE:
+		return null # no body to hold the fit
+	var key := "%d_%d" % [scene.get_instance_id(), mode]
+	if not _fits.has(key):
+		_fits[key] = BlockFit.model_transform(scene, mode)
+	return _fits[key]
 
 func clear() -> void:
 	for c in views:

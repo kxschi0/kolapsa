@@ -1,15 +1,17 @@
 [gd_scene format=4 uid="uid://b6o4tk1d6h8sv"]
 
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/Textures/ConcreteSidewalk001a_Color.png" id="1_kbvet"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/Textures/ConcreteSidewalk001a_Normals.png" id="2_wttbd"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/Textures/ConcreteSidewalk001a_Roughness.png" id="3_63j1a"]
+[ext_resource type="Texture2D" uid="uid://bmiwrhv2xnqk" path="res://Textures/concretesidewalkDark_diffuse.jpg" id="1_kbvet"]
+[ext_resource type="Texture2D" uid="uid://jpgxchyeueus" path="res://Textures/ConcreteSidewalk001a_Normals.png" id="2_wttbd"]
+[ext_resource type="Texture2D" uid="uid://blfiwf5jagisx" path="res://Textures/ConcreteSidewalk001a_Roughness.png" id="3_63j1a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_714j3"]
 albedo_texture = ExtResource("1_kbvet")
+roughness = 0.87
 roughness_texture = ExtResource("3_63j1a")
 normal_enabled = true
-normal_scale = 3.07
+normal_scale = -2.36
 normal_texture = ExtResource("2_wttbd")
+uv1_scale = Vector3(1.895, 1.895, 1.895)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6hy1y"]
 _surfaces = [{

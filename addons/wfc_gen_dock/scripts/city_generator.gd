@@ -1,6 +1,10 @@
 @tool
 class_name CityGenerator
 extends Node3D
+## ORCHESTRATOR ONLY. It reads the settings, creates the helpers and calls
+## them in order. All real work lives in the other files.
+## The City Generator panel (addons/wfc_gen_dock) talks to this node through
+## the signals and the public functions at the bottom of this file.
 
 signal message(text: String, level: int) # level: 0 info, 1 warning, 2 error
 signal state_changed(state: String)
@@ -43,7 +47,7 @@ const TILES_NODE := "KolapsaTiles" # every generated tile lives under this node
 @export var roof_scene: PackedScene
 @export var levels: int = 4
 ## Shift every building (set Y to lift buildings on top of the floor tile).
-@export var origin_offset: Vector3 = Vector3(0, 0.6, 0)
+@export var origin_offset: Vector3 = Vector3(0, 1, 0)
 
 @export_group("Building weights")
 @export var roof: float = 3.0

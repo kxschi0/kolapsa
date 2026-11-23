@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mkyi17jv50lx"
-path.s3tc="res://.godot/imported/wfcCommBldg_pexels-nikiemmert-14903570.jpg-d033c0626d320169badb5e2d04159bf9.s3tc.ctex"
+path.s3tc="res://.godot/imported/wfcCommBldg_pexels-nikiemmert-14903570.jpg-a67483a3638da42823ef29f765f8880f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/GLB/wfcCommBldg_pexels-nikiemmert-14903570.jpg"
-dest_files=["res://.godot/imported/wfcCommBldg_pexels-nikiemmert-14903570.jpg-d033c0626d320169badb5e2d04159bf9.s3tc.ctex"]
+source_file="res://GLB/wfcCommBldg_pexels-nikiemmert-14903570.jpg"
+dest_files=["res://.godot/imported/wfcCommBldg_pexels-nikiemmert-14903570.jpg-a67483a3638da42823ef29f765f8880f.s3tc.ctex"]
 
 [params]
 

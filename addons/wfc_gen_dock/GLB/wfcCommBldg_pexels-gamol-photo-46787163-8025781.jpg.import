@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vesve8p2nf6d"
-path.s3tc="res://.godot/imported/wfcCommBldg_pexels-gamol-photo-46787163-8025781.jpg-86c3a734865e26b57ccdf2b2ea32794a.s3tc.ctex"
+path.s3tc="res://.godot/imported/wfcCommBldg_pexels-gamol-photo-46787163-8025781.jpg-771e3a1755f54a83645ecd909c6029e4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/GLB/wfcCommBldg_pexels-gamol-photo-46787163-8025781.jpg"
-dest_files=["res://.godot/imported/wfcCommBldg_pexels-gamol-photo-46787163-8025781.jpg-86c3a734865e26b57ccdf2b2ea32794a.s3tc.ctex"]
+source_file="res://GLB/wfcCommBldg_pexels-gamol-photo-46787163-8025781.jpg"
+dest_files=["res://.godot/imported/wfcCommBldg_pexels-gamol-photo-46787163-8025781.jpg-771e3a1755f54a83645ecd909c6029e4.s3tc.ctex"]
 
 [params]
 

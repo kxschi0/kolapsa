@@ -28,6 +28,7 @@ static func export_scene(container: Node3D, path: String) -> Error:
 			var packed: PackedScene = null
 			var kind := TileBody.NONE
 			var with_collision := false
+			var model_xf: Variant = null
 			if child.scene_file_path != "":
 				packed = load(child.scene_file_path) as PackedScene
 			elif child is PhysicsBody3D:
@@ -35,6 +36,7 @@ static func export_scene(container: Node3D, path: String) -> Error:
 				for inner in child.get_children():
 					if inner.scene_file_path != "":
 						packed = load(inner.scene_file_path) as PackedScene
+						model_xf = (inner as Node3D).transform # keeps the fit to the block
 				kind = TileBody.RIGID if child is RigidBody3D else TileBody.STATIC
 				with_collision = child.get_node_or_null(TileBody.COLLISION_NAME) != null
 			var merged_piece := packed == null and child is PhysicsBody3D and child.get_node_or_null(GroundMerger.MESH_NAME) != null
@@ -50,7 +52,7 @@ static func export_scene(container: Node3D, path: String) -> Error:
 				copy = child.duplicate() as Node3D # a merged ground piece: mesh and collision come along
 				copy.remove_from_group(SceneSpawner.GROUP)
 			else:
-				copy = TileBody.make(packed, kind, with_collision)
+				copy = TileBody.make(packed, kind, with_collision, model_xf)
 			copy.name = child.name
 			target.add_child(copy)
 			TileBody.set_owner_all(copy, root)

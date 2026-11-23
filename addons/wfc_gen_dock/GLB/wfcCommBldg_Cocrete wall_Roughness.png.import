@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://47vxdu7ey3yu"
-path.s3tc="res://.godot/imported/wfcCommBldg_Cocrete wall_Roughness.png-71a14cea99bd1d4101ed2f24a1ff64d1.s3tc.ctex"
+path.s3tc="res://.godot/imported/wfcCommBldg_Cocrete wall_Roughness.png-315dc3ea06a7ea87bfb9dd2f0a5b6bbe.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/GLB/wfcCommBldg_Cocrete wall_Roughness.png"
-dest_files=["res://.godot/imported/wfcCommBldg_Cocrete wall_Roughness.png-71a14cea99bd1d4101ed2f24a1ff64d1.s3tc.ctex"]
+source_file="res://GLB/wfcCommBldg_Cocrete wall_Roughness.png"
+dest_files=["res://.godot/imported/wfcCommBldg_Cocrete wall_Roughness.png-315dc3ea06a7ea87bfb9dd2f0a5b6bbe.s3tc.ctex"]
 
 [params]
 

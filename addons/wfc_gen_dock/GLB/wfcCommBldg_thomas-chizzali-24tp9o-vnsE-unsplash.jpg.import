@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djelxmvjob6dh"
-path.s3tc="res://.godot/imported/wfcCommBldg_thomas-chizzali-24tp9o-vnsE-unsplash.jpg-52899e7f1c3ecdb506af33ef0d8bd74f.s3tc.ctex"
+path.s3tc="res://.godot/imported/wfcCommBldg_thomas-chizzali-24tp9o-vnsE-unsplash.jpg-5a5823e647ee41dfc81ea156a295c2cf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/GLB/wfcCommBldg_thomas-chizzali-24tp9o-vnsE-unsplash.jpg"
-dest_files=["res://.godot/imported/wfcCommBldg_thomas-chizzali-24tp9o-vnsE-unsplash.jpg-52899e7f1c3ecdb506af33ef0d8bd74f.s3tc.ctex"]
+source_file="res://GLB/wfcCommBldg_thomas-chizzali-24tp9o-vnsE-unsplash.jpg"
+dest_files=["res://.godot/imported/wfcCommBldg_thomas-chizzali-24tp9o-vnsE-unsplash.jpg-5a5823e647ee41dfc81ea156a295c2cf.s3tc.ctex"]
 
 [params]
 

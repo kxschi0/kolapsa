@@ -12,10 +12,14 @@ const STATIC := 0
 const RIGID := 1
 const COLLISION_NAME := "Collision"
 
-static func make(scene: PackedScene, kind: int, with_collision: bool) -> Node3D:
+# model_xf (optional): the transform the model gets inside the body (see BlockFit).
+# null = the model keeps the transform its scene has. The collision box follows the model.
+static func make(scene: PackedScene, kind: int, with_collision: bool, model_xf: Variant = null) -> Node3D:
 	var model := scene.instantiate() as Node3D
 	if kind == NONE:
 		return model
+	if model_xf != null:
+		model.transform = model_xf
 	var body := new_body(kind)
 	body.add_child(model)
 	if with_collision:
@@ -49,6 +53,10 @@ static func set_owner_all(node: Node, new_owner: Node) -> void:
 	if node.scene_file_path == "" and node is PhysicsBody3D:
 		for child in node.get_children():
 			child.owner = new_owner
+
+# The box around every mesh of a model, in the space of the model's parent.
+static func measure(model: Node3D) -> AABB:
+	return _fit(model, model.transform, AABB())
 
 # The box that holds every mesh of the model, in the body's space.
 static func _fit(node: Node3D, to_body: Transform3D, box: AABB) -> AABB:

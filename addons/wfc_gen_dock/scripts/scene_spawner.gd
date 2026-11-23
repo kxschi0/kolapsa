@@ -14,8 +14,9 @@ func _init(p_parent: Node3D) -> void:
 # A node that gets saved with the scene.
 # folder: the group node it goes into (made on first use). name_text: its label in the Scene tree.
 # kind / with_collision: wrap it in a body (see TileBody). The returned node is the body.
-func spawn(scene: PackedScene, folder: String = "", name_text: String = "", kind: int = TileBody.NONE, with_collision: bool = false) -> Node3D:
-	var node := TileBody.make(scene, kind, with_collision)
+# model_xf (optional): where the model sits inside its body (see BlockFit).
+func spawn(scene: PackedScene, folder: String = "", name_text: String = "", kind: int = TileBody.NONE, with_collision: bool = false, model_xf: Variant = null) -> Node3D:
+	var node := TileBody.make(scene, kind, with_collision, model_xf)
 	if name_text != "":
 		node.name = name_text
 	_folder(folder, true).add_child(node, true)

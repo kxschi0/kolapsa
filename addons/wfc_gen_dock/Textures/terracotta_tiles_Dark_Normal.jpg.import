@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://beim6dbyjy3i"
-path="res://.godot/imported/terracotta_tiles_Dark_Normal.jpg-558367ba4dc8e9280a42640f379b669d.ctex"
+path="res://.godot/imported/terracotta_tiles_Dark_Normal.jpg-1715f48c4628c8a10da9dac0176611df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/Textures/terracotta_tiles_Dark_Normal.jpg"
-dest_files=["res://.godot/imported/terracotta_tiles_Dark_Normal.jpg-558367ba4dc8e9280a42640f379b669d.ctex"]
+source_file="res://Textures/terracotta_tiles_Dark_Normal.jpg"
+dest_files=["res://.godot/imported/terracotta_tiles_Dark_Normal.jpg-1715f48c4628c8a10da9dac0176611df.ctex"]
 
 [params]
 

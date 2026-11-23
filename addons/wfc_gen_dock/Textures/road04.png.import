@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0kgxfwtaa03x"
-path.s3tc="res://.godot/imported/road04.png-4bf10e0a162ad0ca7a7d2a90afdfea21.s3tc.ctex"
+path.s3tc="res://.godot/imported/road04.png-e1ef95b4e86a291efe142f8ce91e43ec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/Textures/road04.png"
-dest_files=["res://.godot/imported/road04.png-4bf10e0a162ad0ca7a7d2a90afdfea21.s3tc.ctex"]
+source_file="res://Textures/road04.png"
+dest_files=["res://.godot/imported/road04.png-e1ef95b4e86a291efe142f8ce91e43ec.s3tc.ctex"]
 
 [params]
 

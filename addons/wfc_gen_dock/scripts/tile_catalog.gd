@@ -5,18 +5,18 @@ extends RefCounted
 ## Open/closed: to add a tile, edit these two tables. No other file changes.
 
 const FLOORS := {
-	"floor": preload("res://addons/wfc_gen_dock/Assets/floor.tscn"),
-	"sidewalk": preload("res://addons/wfc_gen_dock/Assets/sidewalk_nobevel.tscn"),
-	"roadN": preload("res://addons/wfc_gen_dock/Assets/roadN.tscn"),
-	"roadS": preload("res://addons/wfc_gen_dock/Assets/roadS.tscn"),
-	"roadW": preload("res://addons/wfc_gen_dock/Assets/roadW.tscn"),
-	"roadE": preload("res://addons/wfc_gen_dock/Assets/roadE.tscn"),
-	"crossroadN": preload("res://addons/wfc_gen_dock/Assets/crossroadN.tscn"),
-	"crossroadS": preload("res://addons/wfc_gen_dock/Assets/crossroadS.tscn"),
-	"crossroadW": preload("res://addons/wfc_gen_dock/Assets/crossroadW.tscn"),
-	"crossroadE": preload("res://addons/wfc_gen_dock/Assets/crossroadE.tscn"),
-	"roadstripeN": preload("res://addons/wfc_gen_dock/Assets/roadstripeN.tscn"),
-	"roadstripeE": preload("res://addons/wfc_gen_dock/Assets/roadstripeE.tscn"),
+	"floor": preload("res://Assets/floor.tscn"),
+	"sidewalk": preload("res://Assets/sidewalk_nobevel.tscn"),
+	"roadN": preload("res://Assets/roadN.tscn"),
+	"roadS": preload("res://Assets/roadS.tscn"),
+	"roadW": preload("res://Assets/roadW.tscn"),
+	"roadE": preload("res://Assets/roadE.tscn"),
+	"crossroadN": preload("res://Assets/crossroadN.tscn"),
+	"crossroadS": preload("res://Assets/crossroadS.tscn"),
+	"crossroadW": preload("res://Assets/crossroadW.tscn"),
+	"crossroadE": preload("res://Assets/crossroadE.tscn"),
+	"roadstripeN": preload("res://Assets/roadstripeN.tscn"),
+	"roadstripeE": preload("res://Assets/roadstripeE.tscn"),
 }
 
 const ROLES := {

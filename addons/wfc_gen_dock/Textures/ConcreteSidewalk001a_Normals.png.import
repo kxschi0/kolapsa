@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jpgxchyeueus"
-path.s3tc="res://.godot/imported/ConcreteSidewalk001a_Normals.png-07f2ccc319e675ebbabf8722e6853a10.s3tc.ctex"
+path.s3tc="res://.godot/imported/ConcreteSidewalk001a_Normals.png-4fa91cfba6b7a1c3ffb2c9f23665f83d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/Textures/ConcreteSidewalk001a_Normals.png"
-dest_files=["res://.godot/imported/ConcreteSidewalk001a_Normals.png-07f2ccc319e675ebbabf8722e6853a10.s3tc.ctex"]
+source_file="res://Textures/ConcreteSidewalk001a_Normals.png"
+dest_files=["res://.godot/imported/ConcreteSidewalk001a_Normals.png-4fa91cfba6b7a1c3ffb2c9f23665f83d.s3tc.ctex"]
 
 [params]
 

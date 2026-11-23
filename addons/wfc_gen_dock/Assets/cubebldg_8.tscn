@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://cb3jqrbheolb8"]
 
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_concrete_wall_009_diff_16k.jpg" id="1_r43qy"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_concrete_wall_009_rough.png" id="2_v8ika"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_concrete_wall_009_nor_gl.png" id="3_40pvh"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_Screenshot 2026-10-13 002706.png" id="4_afx5g"]
+[ext_resource type="Texture2D" uid="uid://cuy5btrcwgjby" path="res://GLB/wfcCommBldg_concrete_wall_009_diff_16k.jpg" id="1_r43qy"]
+[ext_resource type="Texture2D" uid="uid://cb8y7w2eox72u" path="res://GLB/wfcCommBldg_concrete_wall_009_rough.png" id="2_v8ika"]
+[ext_resource type="Texture2D" uid="uid://cer2pckilfp6i" path="res://GLB/wfcCommBldg_concrete_wall_009_nor_gl.png" id="3_40pvh"]
+[ext_resource type="Texture2D" uid="uid://dm5sakp8vhl0s" path="res://GLB/wfcCommBldg_Screenshot 2026-10-13 002706.png" id="4_afx5g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyb2u"]
 resource_name = "concrete_wall_009"

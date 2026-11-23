@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b75mn5pbaymvq"
-path.s3tc="res://.godot/imported/wfcCommBldg_Cocrete wall_BaseColor.jpg-a0f2f478a8f2bd305ce24ae9f12fc7e8.s3tc.ctex"
+path.s3tc="res://.godot/imported/wfcCommBldg_Cocrete wall_BaseColor.jpg-eada9244e1722015254df119e8943eea.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/GLB/wfcCommBldg_Cocrete wall_BaseColor.jpg"
-dest_files=["res://.godot/imported/wfcCommBldg_Cocrete wall_BaseColor.jpg-a0f2f478a8f2bd305ce24ae9f12fc7e8.s3tc.ctex"]
+source_file="res://GLB/wfcCommBldg_Cocrete wall_BaseColor.jpg"
+dest_files=["res://.godot/imported/wfcCommBldg_Cocrete wall_BaseColor.jpg-eada9244e1722015254df119e8943eea.s3tc.ctex"]
 
 [params]
 
