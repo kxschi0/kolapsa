@@ -9,6 +9,7 @@ var tiles: Array
 var compat: Array
 var floor_cells: Dictionary
 var gridsize: int
+var area: Rect2i # the x/z cells the wave covers. Default: the whole grid. A block solver sets a smaller one.
 var levels: int
 var logger: WfcLogger
 var animator: WfcAnimator
@@ -20,6 +21,7 @@ func _init(p_tiles: Array, p_compat: Array, p_floor_cells: Dictionary, p_gridsiz
 	compat = p_compat
 	floor_cells = p_floor_cells
 	gridsize = p_gridsize
+	area = Rect2i(0, 0, p_gridsize, p_gridsize)
 	levels = p_levels
 	logger = p_logger
 	animator = p_animator
@@ -27,9 +29,9 @@ func _init(p_tiles: Array, p_compat: Array, p_floor_cells: Dictionary, p_gridsiz
 
 func init_wave() -> void:
 	wave.clear()
-	for x in range(gridsize):
+	for x in range(area.position.x, area.end.x):
 		for y in range(levels):
-			for z in range(gridsize):
+			for z in range(area.position.y, area.end.y):
 				var on_floor: bool = floor_cells.has(Vector2i(x, z))
 				var opts: Array = []
 				for i in range(tiles.size()):

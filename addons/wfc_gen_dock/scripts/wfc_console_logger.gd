@@ -29,7 +29,7 @@ func wave_initialized(attempt: int) -> void:
 	print("")
 	print("attempt ", attempt)
 	print("1. Initialize wave")
-	print("   cells   : ", solver.gridsize, " x ", solver.levels, " x ", solver.gridsize, " = ", solver.wave.size())
+	print("   cells   : ", solver.area.size.x, " x ", solver.levels, " x ", solver.area.size.y, " = ", solver.wave.size())
 	print("   options : ", _options_start, " in total")
 	print("   per floor cell : ", _layer_line())
 

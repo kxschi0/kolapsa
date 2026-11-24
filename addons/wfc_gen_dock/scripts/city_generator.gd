@@ -265,7 +265,7 @@ func _generate() -> void:
 		last_result = {"streets_only": true}
 		_finish(true)
 		return
-	var ok: bool = await _build_buildings(ground.floor_cells, spawner)
+	var ok: bool = await _build_buildings(ground.floor_cells)
 	_finish(ok)
 
 # The "Merge ground" option: floor and sidewalks first, then the roads, one piece per rectangle.
@@ -337,7 +337,9 @@ func _empty_weight() -> float:
 func _street_weight() -> float:
 	return 0.5 * _density_factor()
 
-func _build_buildings(floor_cells: Dictionary, spawner: SceneSpawner) -> bool:
+# Buildings are made block by block: every block (a group of floor cells that touch) gets its own
+# WFC run and its own group node (Block_01, Block_02...) in the Scene tree.
+func _build_buildings(floor_cells: Dictionary) -> bool:
 	if floor_cells.is_empty():
 		_say("No room for buildings. Raise the grid size or lower the block size.", 1)
 		return false
@@ -349,8 +351,39 @@ func _build_buildings(floor_cells: Dictionary, spawner: SceneSpawner) -> bool:
 	if console_output:
 		logger = WfcConsoleLogger.new(log_steps, detail_steps)
 
-	var solver := WfcSolver.new(building_tiles.tiles, building_tiles.compat, floor_cells, gridsize, levels, logger, null)
-	var view := WfcView.new(spawner, building_tiles.tiles, solver.wave, show_entropy, origin_offset)
+	var parts: Array = BlockSplitter.split(floor_cells)
+	logger.setup(building_tiles, floor_cells.size(), levels)
+
+	var all_wave: Dictionary = {}
+	var groups: Array = []
+	for i in range(parts.size()):
+		var rect: Rect2i = parts[i]["rect"]
+		var group := _make_block_node(i, rect)
+		groups.append(group)
+		if console_output:
+			ConsoleFormat.header("BLOCK %d of %d" % [i + 1, parts.size()])
+			print("floor cells : ", (parts[i]["cells"] as Dictionary).size(), " | x ", rect.position.x, "..", rect.end.x - 1, " | z ", rect.position.y, "..", rect.end.y - 1)
+		if not await _solve_block(i, parts[i], group, building_tiles, logger, all_wave):
+			for g in groups:
+				SceneSpawner.discard(g) # don't leave a half-built city behind
+			return false
+
+	last_result = {
+		"tiles": building_tiles.tiles,
+		"wave": all_wave.duplicate(true),
+		"floor_cells": floor_cells,
+		"rules": building_tiles.rules,
+		"levels": levels,
+	}
+	return true
+
+# One WFC run for one block. The solver only covers the block and one cell around it,
+# so a big map is many small problems instead of one huge one.
+func _solve_block(index: int, block: Dictionary, group: Node3D, building_tiles: BuildingTiles, logger: WfcLogger, all_wave: Dictionary) -> bool:
+	var cells: Dictionary = block["cells"]
+	var solver := WfcSolver.new(building_tiles.tiles, building_tiles.compat, cells, gridsize, levels, logger, null)
+	solver.area = (block["rect"] as Rect2i).grow(1).intersection(Rect2i(0, 0, gridsize, gridsize))
+	var view := WfcView.new(SceneSpawner.new(group), building_tiles.tiles, solver.wave, show_entropy, origin_offset)
 	view.body_kind = building_body
 	view.with_collision = add_collision
 	var animator := WfcAnimator.new(view, get_tree(), animate, steps_per_frame)
@@ -359,8 +392,6 @@ func _build_buildings(floor_cells: Dictionary, spawner: SceneSpawner) -> bool:
 	live_view = view
 	live_animator = animator
 
-	logger.setup(building_tiles, floor_cells.size(), levels)
-
 	var ok := false
 	var attempt := 0
 	while not ok and attempt < MAX_ATTEMPTS:
@@ -368,7 +399,8 @@ func _build_buildings(floor_cells: Dictionary, spawner: SceneSpawner) -> bool:
 		live_attempt = attempt
 		# The solver has its own dice (solver.rng), seeded here, so nothing that happens
 		# between frames can change the buildings: the same seed gives the same buildings.
-		solver.rng.seed = seed_value + attempt
+		# Each block has its own number, so two blocks of the same shape still differ.
+		solver.rng.seed = seed_value + index * 100 + attempt
 		view.clear()
 		animator.reset()
 		solver.init_wave()
@@ -378,20 +410,26 @@ func _build_buildings(floor_cells: Dictionary, spawner: SceneSpawner) -> bool:
 			logger.attempt_failed(attempt)
 
 	if not ok:
-		view.clear() # don't leave a half-built city behind
-		_say("Gave up after %d failed attempts (seed %d). The building rules may be too strict for this layout. Try Regenerate, a bigger grid, or more assets." % [attempt, seed_value], 2)
+		view.clear()
+		_say("Block %d gave up after %d failed attempts (seed %d). The building rules may be too strict for this block. Try Regenerate, a bigger block, or more assets." % [index + 1, attempt, seed_value], 2)
 		return false
 
 	view.update_all()
 	logger.summary(attempt)
-	last_result = {
-		"tiles": building_tiles.tiles,
-		"wave": solver.wave.duplicate(true),
-		"floor_cells": floor_cells,
-		"rules": building_tiles.rules,
-		"levels": levels,
-	}
+	for cell in solver.wave:
+		# A cell next to the block may belong to another block. The block that owns the column wins.
+		if cells.has(Vector2i(cell.x, cell.z)) or not all_wave.has(cell):
+			all_wave[cell] = solver.wave[cell]
 	return true
+
+# The group node of one block, named with its number and where it is: Block_01_x2-5_z2-5.
+func _make_block_node(index: int, rect: Rect2i) -> Node3D:
+	var node := Node3D.new()
+	node.name = "Block_%02d_x%d-%d_z%d-%d" % [index + 1, rect.position.x, rect.end.x - 1, rect.position.y, rect.end.y - 1]
+	_container().add_child(node)
+	if is_inside_tree() and get_tree().edited_scene_root != null:
+		node.owner = get_tree().edited_scene_root
+	return node
 
 # ------------------------------------------- THE PANEL TALKS TO THESE
 

@@ -5,7 +5,7 @@ extends RefCounted
 ## Every function returns a list of plain-language messages. Empty = all good.
 
 const MIN_GRIDSIZE := 4
-const MAX_GRIDSIZE := 32 # bigger grids can make the editor unresponsive
+const MAX_GRIDSIZE := 100 # bigger grids can make the editor unresponsive
 const MIN_LEVELS := 2
 const MAX_LEVELS := 6
 const MAX_STREETS := 6

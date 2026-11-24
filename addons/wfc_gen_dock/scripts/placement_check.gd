@@ -65,14 +65,17 @@ static func check_buildings(container: Node, wave: Dictionary, tiles: Array) -> 
 			expected += 1
 	var placed := 0
 	var folders_found := 0
-	for folder in BUILDING_FOLDERS:
-		var node := container.get_node_or_null(folder)
-		if node == null or node.is_queued_for_deletion():
+	for group in container.get_children(): # one group per block (Block_01...)
+		if group.is_queued_for_deletion():
 			continue
-		folders_found += 1
-		for child in node.get_children():
-			if not child.is_queued_for_deletion():
-				placed += 1
+		for folder in BUILDING_FOLDERS:
+			var node := group.get_node_or_null(folder)
+			if node == null or node.is_queued_for_deletion():
+				continue
+			folders_found += 1
+			for child in node.get_children():
+				if not child.is_queued_for_deletion():
+					placed += 1
 	if placed == expected:
 		return problems
 	var cause := "Cause: some buildings were never created."

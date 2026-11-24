@@ -91,7 +91,7 @@ func _build_settings() -> Control:
 	scroll.add_child(box)
 
 	var layout_box := _section(box, "Layout")
-	_spin(layout_box, "gridsize", "Grid size", 4, 32, 1, "Cells along each side of the city.")
+	_spin(layout_box, "gridsize", "Grid size", 4, 100, 1, "Cells along each side of the city.")
 	_spin(layout_box, "blocks", "Block size", 1, 8, 1, "Smallest block of buildings between two streets, in cells.")
 	_spin(layout_box, "horizontal_streets", "Horizontal streets", 0, 6, 1, "Streets running left to right.")
 	_spin(layout_box, "vertical_streets", "Vertical streets", 0, 6, 1, "Streets running front to back.")
