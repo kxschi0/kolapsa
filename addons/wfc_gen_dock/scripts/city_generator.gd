@@ -1,6 +1,10 @@
 @tool
 class_name CityGenerator
 extends Node3D
+## ORCHESTRATOR ONLY. It reads the settings, creates the helpers and calls
+## them in order. All real work lives in the other files.
+## The City Generator panel (addons/wfc_gen_dock) talks to this node through
+## the signals and the public functions at the bottom of this file.
 
 signal message(text: String, level: int) # level: 0 info, 1 warning, 2 error
 signal state_changed(state: String)
@@ -95,12 +99,19 @@ const TILES_NODE := "KolapsaTiles" # every generated tile lives under this node
 			randomize_seed = false
 			notify_property_list_changed()
 
+@export_group("Safety")
+## After a city is built, the scene is checked. If blocks, sidewalks, roads or buildings are missing,
+## build the same seed again (up to 3 times). Off: only tell you, and you press Regenerate.
+@export var auto_regenerate: bool = true
+
 var running: bool = false
 var _picking_seed: bool = false
 var is_valid: bool = false
 var problems: PackedStringArray = PackedStringArray()
 var last_result: Dictionary = {} # what the last successful run produced
+var _plan: Dictionary = {} # cell -> ground tile name that the last run had to place
 var _force_new_seed: bool = false
+var _retry_same_seed: bool = false # an automatic retry keeps the seed it had
 
 # What the game window (RunSession) watches while a city is being built.
 var live_solver: WfcSolver
@@ -130,7 +141,7 @@ func _ready() -> void:
 # Every random call in all the scripts uses Godot's global generator,
 # so seeding it here makes the street/ground layout repeatable.
 func _apply_seed() -> void:
-	if randomize_seed or _force_new_seed:
+	if (randomize_seed or _force_new_seed) and not _retry_same_seed:
 		randomize()
 		_picking_seed = true
 		seed_value = randi()
@@ -169,10 +180,11 @@ func _clear_scene() -> void:
 	# tagged ones. A saved scene forgets the tag, so a city saved in the editor used to
 	# survive Run Project and the new city was built on top of it.
 	for tile in _container().get_children():
-		tile.queue_free()
+		SceneSpawner.discard(tile)
 
 func _reset_result() -> void:
 	last_result = {}
+	_plan = {}
 	problems = PackedStringArray()
 	is_valid = false
 
@@ -201,6 +213,7 @@ func _run() -> void:
 	running = true
 	_set_state("Generating")
 	await _generate()
+	await _verify_scene()
 	running = false
 	_force_new_seed = false
 	_set_state("Idle")
@@ -246,6 +259,8 @@ func _generate() -> void:
 			if delay > 0.0:
 				await get_tree().create_timer(delay).timeout
 
+	_plan = plan
+
 	if not build_buildings:
 		last_result = {"streets_only": true}
 		_finish(true)
@@ -280,6 +295,35 @@ func _finish(ok: bool) -> void:
 		_say("City generated and checked: no conflicts (seed %d)." % seed_value, 0)
 	else:
 		_say("%d conflict(s) found. Export is blocked until you regenerate." % found.size(), 2)
+
+const MAX_RETRIES := 3
+
+# Looks at the real nodes in the scene (floors, sidewalks, roads, buildings) and lists what is missing.
+func _placement_problems() -> PackedStringArray:
+	var found := PlacementCheck.check(_container(), _plan, TileCatalog.new())
+	if last_result.has("wave"):
+		found.append_array(PlacementCheck.check_buildings(_container(), last_result["wave"], last_result["tiles"]))
+	return found
+
+# Runs after every generation. It waits two frames, so every pending delete has really happened,
+# then checks the scene. Missing blocks: build the same seed again (auto_regenerate), or tell the user.
+func _verify_scene() -> void:
+	var tries := 0
+	while true:
+		await get_tree().process_frame
+		await get_tree().process_frame
+		var missing := _placement_problems()
+		if missing.is_empty():
+			return
+		if not auto_regenerate or tries >= MAX_RETRIES:
+			_say("Blocks are missing from the scene (seed %d):\n%s\nPress Regenerate, or tick Auto regenerate in Advanced." % [seed_value, "\n".join(missing)], 2)
+			validate_current(false)
+			return
+		tries += 1
+		_say("Blocks are missing (seed %d). Building it again, try %d of %d.\n%s" % [seed_value, tries, MAX_RETRIES, "\n".join(missing)], 1)
+		_retry_same_seed = true
+		await _generate()
+		_retry_same_seed = false
 
 # Density scales the "empty" weights. At the default density (0.7) the factor
 # is exactly 1, so the weights are the ones you set: air = empty_space,
@@ -372,6 +416,7 @@ func tileset_errors() -> PackedStringArray:
 # Re-checks the last generated city (UC-05). Also runs after every generation.
 func validate_current(announce: bool = true) -> PackedStringArray:
 	problems = SceneValidator.check(last_result)
+	problems.append_array(_placement_problems())
 	is_valid = problems.is_empty()
 	if is_valid and announce:
 		_say("Scene check passed: every piece follows the rules.", 0)

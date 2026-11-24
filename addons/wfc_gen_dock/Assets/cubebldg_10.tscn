@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://drlxy2u2exaan"]
 
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_Cocrete wall_BaseColor.jpg" id="1_kx63u"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_Cocrete wall_Roughness.png" id="2_r3i0w"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_Cocrete wall_Normal.jpg" id="3_radab"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_pexels-enginakyurt-9756572.jpg" id="4_03c8o"]
+[ext_resource type="Texture2D" uid="uid://b75mn5pbaymvq" path="res://GLB/wfcCommBldg_Cocrete wall_BaseColor.jpg" id="1_kx63u"]
+[ext_resource type="Texture2D" uid="uid://47vxdu7ey3yu" path="res://GLB/wfcCommBldg_Cocrete wall_Roughness.png" id="2_r3i0w"]
+[ext_resource type="Texture2D" uid="uid://cvpkgno1rbvyt" path="res://GLB/wfcCommBldg_Cocrete wall_Normal.jpg" id="3_radab"]
+[ext_resource type="Texture2D" uid="uid://dluqanmolv4l7" path="res://GLB/wfcCommBldg_pexels-enginakyurt-9756572.jpg" id="4_03c8o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48q4v"]
 resource_name = "Concrete wall"

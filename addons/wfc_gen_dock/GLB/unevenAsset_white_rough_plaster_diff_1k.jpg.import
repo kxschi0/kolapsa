@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crp4x4vwok3sd"
-path.s3tc="res://.godot/imported/roof02_whiteWall_diffuse.png-d5a5ef6369c05b19eb12d1c68084c90c.s3tc.ctex"
+uid="uid://cp3ko82oh85yp"
+path.s3tc="res://.godot/imported/unevenAsset_white_rough_plaster_diff_1k.jpg-f8eaab040f2126c996e6802c9f430904.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "2871d637722802f7b4d08411dc47d506"
+"md5": "56f42cf192030830c08c9a7d6fa22567"
 }
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/GLB/roof02_whiteWall_diffuse.png"
-dest_files=["res://.godot/imported/roof02_whiteWall_diffuse.png-d5a5ef6369c05b19eb12d1c68084c90c.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/GLB/unevenAsset_white_rough_plaster_diff_1k.jpg"
+dest_files=["res://.godot/imported/unevenAsset_white_rough_plaster_diff_1k.jpg-f8eaab040f2126c996e6802c9f430904.s3tc.ctex"]
 
 [params]
 

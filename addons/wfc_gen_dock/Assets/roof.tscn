@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c24tknygu3k0r"]
 
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/Textures/pexels-james-frid-81279-6673022.jpg" id="1_hire2"]
+[ext_resource type="Texture2D" uid="uid://se2j0nqr8ypo" path="res://Assets/pexels-james-frid-81279-6673022.jpg" id="1_hire2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wv7x"]
 resource_name = "Material.022"

@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://b7qkhb81eipac"]
 
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_concrete04_diffuse.jpg" id="1_3rv8a"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_concrete04_glossiness.png" id="2_0tjvq"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_concrete04_normal_opengl.jpg" id="3_5877u"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_pexels-winkingkitten-15223109.jpg" id="4_bbex1"]
+[ext_resource type="Texture2D" uid="uid://cwpbvvhqn54ox" path="res://GLB/wfcCommBldg_concrete04_diffuse.jpg" id="1_3rv8a"]
+[ext_resource type="Texture2D" uid="uid://clllarqlaugm2" path="res://GLB/wfcCommBldg_concrete04_glossiness.png" id="2_0tjvq"]
+[ext_resource type="Texture2D" uid="uid://ckx5oxx72sm7q" path="res://GLB/wfcCommBldg_concrete04_normal_opengl.jpg" id="3_5877u"]
+[ext_resource type="Texture2D" uid="uid://cj1bcruhegn5c" path="res://GLB/wfcCommBldg_pexels-winkingkitten-15223109.jpg" id="4_bbex1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cm8ko"]
 resource_name = "Concrete wall.001"

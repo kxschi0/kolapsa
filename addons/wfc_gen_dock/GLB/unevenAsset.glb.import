@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bwxupbgwf5uqr"
-path="res://.godot/imported/roof02.glb-1cb0e0e953bac484abdc91b51884ce10.scn"
+uid="uid://daqmrbp0ibhvy"
+path="res://.godot/imported/unevenAsset.glb-4d77c85edc28462efc23dc731ca62341.scn"
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/GLB/roof02.glb"
-dest_files=["res://.godot/imported/roof02.glb-1cb0e0e953bac484abdc91b51884ce10.scn"]
+source_file="res://addons/wfc_gen_dock/GLB/unevenAsset.glb"
+dest_files=["res://.godot/imported/unevenAsset.glb-4d77c85edc28462efc23dc731ca62341.scn"]
 
 [params]
 

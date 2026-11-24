@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b43jj0t0icfiw"]
 
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_Screenshot 2026-10-05 204403.png" id="1_5s7r8"]
+[ext_resource type="Texture2D" uid="uid://d17jlyjjns0im" path="res://GLB/wfcCommBldg_Screenshot 2026-10-05 204403.png" id="1_5s7r8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhysr"]
 resource_name = "Material.011"

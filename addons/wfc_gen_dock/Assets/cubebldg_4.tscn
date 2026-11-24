@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bua3r71ixfl7g"]
 
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_Screenshot 2026-10-13 054341.png" id="1_s1gch"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/GLB/wfcCommBldg_thomas-chizzali-24tp9o-vnsE-unsplash.jpg" id="2_f8lp7"]
+[ext_resource type="Texture2D" uid="uid://ch34525bh26yf" path="res://GLB/wfcCommBldg_Screenshot 2026-10-13 054341.png" id="1_s1gch"]
+[ext_resource type="Texture2D" uid="uid://djelxmvjob6dh" path="res://GLB/wfcCommBldg_thomas-chizzali-24tp9o-vnsE-unsplash.jpg" id="2_f8lp7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykb5o"]
 resource_name = "Material.009"

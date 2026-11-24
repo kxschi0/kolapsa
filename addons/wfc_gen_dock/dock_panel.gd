@@ -8,6 +8,8 @@ extends VBoxContainer
 ##   right   : tabs  Ground | Middle | Roof | Streets | Report
 
 const EXPORT_DIR := "res://exports"
+# Settings that show a toast when you hit (or type past) their min or max.
+const LIMIT_TOAST_PROPS := ["gridsize", "horizontal_streets", "vertical_streets", "road_width", "tile_size", "levels"]
 
 var generator: CityGenerator
 var _add_kind: String = ""
@@ -88,18 +90,18 @@ func _build_settings() -> Control:
 	box.add_theme_constant_override("separation", 4)
 	scroll.add_child(box)
 
-	_title(box, "Layout")
-	_spin(box, "gridsize", "Grid size", 4, 32, 1, "Cells along each side of the city.")
-	_spin(box, "blocks", "Block size", 1, 8, 1, "Smallest block of buildings between two streets, in cells.")
-	_spin(box, "horizontal_streets", "Horizontal streets", 0, 6, 1, "Streets running left to right.")
-	_spin(box, "vertical_streets", "Vertical streets", 0, 6, 1, "Streets running front to back.")
-	_spin(box, "road_width", "Road width", 1, 3, 1, "How many cells wide each street is. Wide roads use grid space, so raise the grid size.")
-	_check(box, "plain_roads", "Plain roads", "On: plain asphalt, only crossings are marked. Off: stripe tile on every road cell (best with width 1).")
-	_check(box, "sidewalk_border", "Sidewalk border", "On: the outer ring of the grid is all sidewalk. A street that reaches the edge is replaced by sidewalk there. Off: streets run to the edge.")
+	var layout_box := _section(box, "Layout")
+	_spin(layout_box, "gridsize", "Grid size", 4, 32, 1, "Cells along each side of the city.")
+	_spin(layout_box, "blocks", "Block size", 1, 8, 1, "Smallest block of buildings between two streets, in cells.")
+	_spin(layout_box, "horizontal_streets", "Horizontal streets", 0, 6, 1, "Streets running left to right.")
+	_spin(layout_box, "vertical_streets", "Vertical streets", 0, 6, 1, "Streets running front to back.")
+	_spin(layout_box, "road_width", "Road width", 1, 3, 1, "How many cells wide each street is. Wide roads use grid space, so raise the grid size.")
+	_check(layout_box, "plain_roads", "Plain roads", "On: plain asphalt, only crossings are marked. Off: stripe tile on every road cell (best with width 1).")
+	_check(layout_box, "sidewalk_border", "Sidewalk border", "On: the outer ring of the grid is all sidewalk. A street that reaches the edge is replaced by sidewalk there. Off: streets run to the edge.")
 
-	_title(box, "Buildings")
-	_check(box, "build_buildings", "Build buildings", "Untick to generate streets, sidewalks and floor only.")
-	_spin(box, "levels", "Max floors", 2, 6, 1, "Tallest a building can be, roof included.")
+	var buildings_box := _section(box, "Buildings")
+	_check(buildings_box, "build_buildings", "Build buildings", "Untick to generate streets, sidewalks and floor only.")
+	_spin(buildings_box, "levels", "Max floors", 2, 6, 1, "Tallest a building can be, roof included.")
 	var density := HSlider.new()
 	density.min_value = 0.0
 	density.max_value = 1.0
@@ -112,27 +114,27 @@ func _build_settings() -> Control:
 	var density_row := HBoxContainer.new()
 	density_row.add_child(density)
 	density_row.add_child(_density_label)
-	_row(box, "Building density", density_row, "Higher means more buildings and fewer empty lots.", density)
-	_spin(box, "tile_size", "Tile size", 0.25, 4.0, 0.25, "Scales the whole city. 1 = original size.")
+	_row(buildings_box, "Building density", density_row, "Higher means more buildings and fewer empty lots.", density)
+	_spin(buildings_box, "tile_size", "Tile size", 0.25, 4.0, 0.25, "Scales the whole city. 1 = original size.")
 
-	_title(box, "Physics")
-	_option(box, "ground_body", "Floor, sidewalk, road", ["Static body", "Rigid body"], "What each floor, sidewalk and road tile becomes. Rigid bodies stay put until something touches them.")
-	_option(box, "building_body", "Buildings", ["Static body", "Rigid body"], "What each building piece (shop fronts, floors, roofs) becomes. Rigid bodies stay put until something touches them.")
-	_check(box, "add_collision", "Add collision", "Adds a box collision to every tile, sized to fit its mesh.")
-	_check(box, "merge_ground", "Merge ground tiles", "Joins neighbouring floor, sidewalk and road tiles into one mesh and one collision. Off: one node per tile. Buildings are not affected.")
+	var physics_box := _section(box, "Physics")
+	_option(physics_box, "ground_body", "Floor, sidewalk, road", ["Static body", "Rigid body"], "What each floor, sidewalk and road tile becomes. Rigid bodies stay put until something touches them.")
+	_option(physics_box, "building_body", "Buildings", ["Static body", "Rigid body"], "What each building piece (shop fronts, floors, roofs) becomes. Rigid bodies stay put until something touches them.")
+	_check(physics_box, "add_collision", "Add collision", "Adds a box collision to every tile, sized to fit its mesh.")
+	_check(physics_box, "merge_ground", "Merge ground tiles", "Joins neighbouring floor, sidewalk and road tiles into one mesh and one collision. Off: one node per tile. Buildings are not affected.")
 
-	_title(box, "Run Project")
-	_option(box, "run_mode", "Run as", ["Developer", "Game"], "Developer: orbit camera, status panel and step-by-step animation. Game: no animation, the city appears at once and your own player can move.")
+	var run_box := _section(box, "Run Project")
+	_option(run_box, "run_mode", "Run as", ["Developer", "Game"], "Developer: orbit camera, status panel and step-by-step animation. Game: no animation, the city appears at once and your own player can move.")
 
-	_title(box, "Seed")
-	_check(box, "randomize_seed", "New random seed every time", "Untick to reuse the seed value below and get the same city again.")
+	var seed_box := _section(box, "Seed")
+	_check(seed_box, "randomize_seed", "New random seed every time", "Untick to reuse the seed value below and get the same city again.")
 	var seed_spin := _make_spin("seed_value", 0, 4294967295, 1)
 	var copy := _button("Copy", "ActionCopy", _on_copy_seed)
 	var seed_row := HBoxContainer.new()
 	seed_row.add_child(seed_spin)
 	seed_row.add_child(copy)
-	_row(box, "Seed value", seed_row, "Untick the box above and reuse this number to get the same city again.", seed_spin)
-	_check(box, "run_with_editor_seed", "Run Project uses this seed", "On: Run Project builds the city of the seed above, so it matches the editor. Off: it follows the box above (press R in the game for a new random city).")
+	_row(seed_box, "Seed value", seed_row, "Untick the box above and reuse this number to get the same city again.", seed_spin)
+	_check(seed_box, "run_with_editor_seed", "Run Project uses this seed", "On: Run Project builds the city of the seed above, so it matches the editor. Off: it follows the box above (press R in the game for a new random city).")
 
 	_adv_toggle = Button.new()
 	_adv_toggle.text = "Advanced"
@@ -184,6 +186,9 @@ func _build_settings() -> Control:
 	_check(_adv_box, "console_output", "Print to Output", "Turn off to silence all printing.")
 	_check(_adv_box, "log_steps", "Print every step", "Writes each WFC step to the Output panel.")
 	_spin(_adv_box, "detail_steps", "Steps printed in full", 0, 20, 1, "After this many steps, only one line per step is printed.")
+
+	_title(_adv_box, "Safety")
+	_check(_adv_box, "auto_regenerate", "Auto regenerate", "After building, the scene is checked. If blocks, sidewalks, roads or buildings are missing, build the same seed again (up to 3 times). Off: you only get a message and press Regenerate yourself.")
 
 	_param_errors = Label.new()
 	_param_errors.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -300,16 +305,65 @@ func _button(text: String, icon_name: String, callback: Callable) -> Button:
 	return b
 
 func _title(parent: Control, text: String) -> void:
+	var gap := 8.0 * EditorInterface.get_editor_scale()
+	var font_px := roundi(20.0 * EditorInterface.get_editor_scale())
+	var space_above := Control.new()
+	space_above.custom_minimum_size = Vector2(0, gap)
+	parent.add_child(space_above)
 	var l := Label.new()
 	l.text = text
 	l.theme_type_variation = &"HeaderSmall"
+	l.add_theme_font_size_override("font_size", font_px)
 	parent.add_child(l)
+	var space_below := Control.new()
+	space_below.custom_minimum_size = Vector2(0, gap)
+	parent.add_child(space_below)
+
+# A collapsible section: a clickable header, then the rows inside a padded box.
+# Returns the box the rows go into.
+func _section(parent: Control, text: String, start_open: bool = true) -> VBoxContainer:
+	var ui_scale := EditorInterface.get_editor_scale()
+	var space := Control.new()
+	space.custom_minimum_size = Vector2(0, 8.0 * ui_scale)
+	parent.add_child(space)
+
+	var header := Button.new()
+	header.text = text
+	header.flat = true
+	header.toggle_mode = true
+	header.button_pressed = start_open
+	header.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	header.icon = _icon("GuiTreeArrowDown" if start_open else "GuiTreeArrowRight")
+	header.add_theme_font_size_override("font_size", roundi(20.0 * ui_scale))
+	var editor_theme := EditorInterface.get_editor_theme()
+	if editor_theme != null and editor_theme.has_font("bold", "EditorFonts"):
+		header.add_theme_font_override("font", editor_theme.get_font("bold", "EditorFonts"))
+	parent.add_child(header)
+
+	var pad := MarginContainer.new()
+	pad.add_theme_constant_override("margin_left", roundi(14.0 * ui_scale))
+	pad.add_theme_constant_override("margin_right", roundi(6.0 * ui_scale))
+	pad.add_theme_constant_override("margin_top", roundi(4.0 * ui_scale))
+	pad.add_theme_constant_override("margin_bottom", roundi(8.0 * ui_scale))
+	pad.visible = start_open
+	parent.add_child(pad)
+
+	var content := VBoxContainer.new()
+	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	content.add_theme_constant_override("separation", 4)
+	pad.add_child(content)
+
+	header.toggled.connect(_on_section_toggled.bind(header, pad))
+	return content
 
 func _make_spin(prop: String, min_v: float, max_v: float, step: float) -> SpinBox:
 	var s := SpinBox.new()
 	s.min_value = min_v
 	s.max_value = max_v
 	s.step = step
+	if prop in LIMIT_TOAST_PROPS:
+		s.allow_greater = true # so a too-big typed number reaches _on_setting_changed
+		s.allow_lesser = true
 	s.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	s.value_changed.connect(_on_setting_changed.bind(prop))
 	_inputs[prop] = s
@@ -342,6 +396,7 @@ func _row(parent: Control, text: String, content: Control, tip: String, tip_targ
 	l.custom_minimum_size = Vector2(130, 0)
 	l.tooltip_text = tip
 	tip_target.tooltip_text = tip
+	tip_target.set_meta(&"label", text)
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	h.add_child(l)
 	h.add_child(content)
@@ -531,21 +586,38 @@ func _on_setting_changed(value: float, prop: String) -> void:
 	if not _has_generator():
 		return
 	var old: Variant = generator.get(prop)
+	var box := _inputs[prop] as Range
+	var on_limit: bool = prop in LIMIT_TOAST_PROPS and (value >= box.max_value or value <= box.min_value)
+	if prop in LIMIT_TOAST_PROPS:
+		value = clampf(value, box.min_value, box.max_value)
+		box.set_value_no_signal(value)
 	generator.set(prop, roundi(value) if typeof(old) == TYPE_INT else value)
 	var errors := generator.number_errors()
 	if errors.is_empty():
 		_param_errors.text = ""
 		_mark_dirty()
+		if on_limit:
+			_toast_limit(prop, value)
 	else:
 		# Keep the previous valid value and say why.
 		generator.set(prop, old)
 		(_inputs[prop] as Range).set_value_no_signal(old)
 		_param_errors.text = "Not changed:\n" + "\n".join(errors)
+		EditorToast.push(errors[0], EditorToast.Level.WARNING)
 	_update_value_labels()
 	if prop == "seed_value":
 		# Typing a seed unticks "New random seed every time" inside the generator. Show it.
 		(_checks["randomize_seed"] as CheckBox).set_pressed_no_signal(generator.randomize_seed)
 	_update_ui()
+
+# One toast: "<Setting>: maximum is N." or "<Setting>: minimum is N."
+func _toast_limit(prop: String, value: float) -> void:
+	var box := _inputs[prop] as Range
+	var label: String = box.get_meta(&"label", prop)
+	if value >= box.max_value:
+		EditorToast.limit_reached(label, true, box.max_value)
+	else:
+		EditorToast.limit_reached(label, false, box.min_value)
 
 func _on_bool_changed(pressed: bool, prop: String) -> void:
 	if _has_generator():
@@ -563,6 +635,10 @@ func _on_offset_changed(_value: float, _axis: int) -> void:
 	if _has_generator():
 		generator.origin_offset = Vector3(_offset_spins[0].value, _offset_spins[1].value, _offset_spins[2].value)
 		_mark_dirty()
+
+func _on_section_toggled(open: bool, header: Button, pad: Control) -> void:
+	pad.visible = open
+	header.icon = _icon("GuiTreeArrowDown" if open else "GuiTreeArrowRight")
 
 func _on_advanced_toggled(pressed: bool) -> void:
 	_adv_box.visible = pressed

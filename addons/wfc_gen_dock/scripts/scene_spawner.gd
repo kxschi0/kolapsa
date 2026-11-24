@@ -14,8 +14,9 @@ func _init(p_parent: Node3D) -> void:
 # A node that gets saved with the scene.
 # folder: the group node it goes into (made on first use). name_text: its label in the Scene tree.
 # kind / with_collision: wrap it in a body (see TileBody). The returned node is the body.
-func spawn(scene: PackedScene, folder: String = "", name_text: String = "", kind: int = TileBody.NONE, with_collision: bool = false) -> Node3D:
-	var node := TileBody.make(scene, kind, with_collision)
+# model_xf (optional): where the model sits inside its body (see BlockFit).
+func spawn(scene: PackedScene, folder: String = "", name_text: String = "", kind: int = TileBody.NONE, with_collision: bool = false, model_xf: Variant = null) -> Node3D:
+	var node := TileBody.make(scene, kind, with_collision, model_xf)
 	if name_text != "":
 		node.name = name_text
 	_folder(folder, true).add_child(node, true)
@@ -41,7 +42,15 @@ func add_temporary(node: Node, folder: String = "", name_text: String = "") -> v
 func clear() -> void:
 	for child in parent.get_children():
 		if child.is_in_group(GROUP):
-			child.queue_free()
+			discard(child)
+
+# Removes a node from the scene RIGHT NOW, then frees it. queue_free() alone keeps the node in the
+# tree until the end of the frame, so a folder with the same name (Floors, Roads...) would be found
+# again and reused, and everything put into it would be thrown away with it.
+static func discard(node: Node) -> void:
+	if node.get_parent() != null:
+		node.get_parent().remove_child(node)
+	node.queue_free()
 
 # The group node called `folder` under the parent. Empty name = the parent itself.
 func _folder(folder: String, saved: bool) -> Node3D:

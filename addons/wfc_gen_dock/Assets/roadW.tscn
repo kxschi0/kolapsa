@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://dqhrsrmmvkegy"]
 
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/Textures/road03.png" id="1_rw021"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/Textures/Road_normal.jpg" id="2_v08le"]
-[ext_resource type="Texture2D" path="res://addons/wfc_gen_dock/Textures/Road_roughness.jpg" id="3_qeb0y"]
+[ext_resource type="Texture2D" uid="uid://ddqe20mfyxnya" path="res://Textures/road03.png" id="1_rw021"]
+[ext_resource type="Texture2D" uid="uid://p8f7wjl8eqwd" path="res://Textures/Road_normal.jpg" id="2_v08le"]
+[ext_resource type="Texture2D" uid="uid://dpkj8ejtwa4wb" path="res://Textures/Road_roughness.jpg" id="3_qeb0y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyklt"]
 albedo_texture = ExtResource("1_rw021")

@@ -11,3 +11,8 @@ static func push(message: String, level: Level = Level.INFO) -> void:
 	if Engine.is_editor_hint():
 		var toaster: Object = EditorInterface.get_editor_toaster()
 		toaster.push_toast(message, level)
+
+# A number box reached its smallest or biggest allowed value.
+static func limit_reached(setting: String, is_max: bool, limit_value: float) -> void:
+	var word := "maximum" if is_max else "minimum"
+	push("%s: %s is %s." % [setting, word, String.num(limit_value)], Level.WARNING)

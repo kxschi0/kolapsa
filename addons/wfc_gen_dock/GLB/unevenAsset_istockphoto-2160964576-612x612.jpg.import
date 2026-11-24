@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8fqurcsdm26i"
-path.s3tc="res://.godot/imported/roof02_whiteWall_rough.png-e0cb46501ae7cdfff10c8bae4bd88889.s3tc.ctex"
+uid="uid://c42sh4xnncqq7"
+path.s3tc="res://.godot/imported/unevenAsset_istockphoto-2160964576-612x612.jpg-181e5a2b25104b0198ec17add397e081.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "43870e22702a0eb60cafefbd89c9c5f9"
+"md5": "232c38d4cd78d342ab5333c53c87d986"
 }
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/GLB/roof02_whiteWall_rough.png"
-dest_files=["res://.godot/imported/roof02_whiteWall_rough.png-e0cb46501ae7cdfff10c8bae4bd88889.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/GLB/unevenAsset_istockphoto-2160964576-612x612.jpg"
+dest_files=["res://.godot/imported/unevenAsset_istockphoto-2160964576-612x612.jpg-181e5a2b25104b0198ec17add397e081.s3tc.ctex"]
 
 [params]
 

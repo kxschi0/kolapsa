@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yjhe5yn26tj8"
-path.s3tc="res://.godot/imported/road01.png-5efeb9911efebce3bba19c748411cd8e.s3tc.ctex"
+uid="uid://se2j0nqr8ypo"
+path.s3tc="res://.godot/imported/pexels-james-frid-81279-6673022.jpg-4ff6a5124d651c4502d0498a880e8037.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/wfc_gen_dock/Textures/road01.png"
-dest_files=["res://.godot/imported/road01.png-5efeb9911efebce3bba19c748411cd8e.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/Assets/pexels-james-frid-81279-6673022.jpg"
+dest_files=["res://.godot/imported/pexels-james-frid-81279-6673022.jpg-4ff6a5124d651c4502d0498a880e8037.s3tc.ctex"]
 
 [params]
 
