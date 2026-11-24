@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cepnbsehf5h73"
-path="res://.godot/imported/wfcCommBldg.glb-d7734cec34081e60e1cc6002ec529632.scn"
+path="res://.godot/imported/wfcCommBldg.glb-6f5487df4d8afa1369b1cac40dea372b.scn"
 
 [deps]
 
-source_file="res://GLB/wfcCommBldg.glb"
-dest_files=["res://.godot/imported/wfcCommBldg.glb-d7734cec34081e60e1cc6002ec529632.scn"]
+source_file="res://addons/wfc_gen_dock/GLB/wfcCommBldg.glb"
+dest_files=["res://.godot/imported/wfcCommBldg.glb-6f5487df4d8afa1369b1cac40dea372b.scn"]
 
 [params]
 

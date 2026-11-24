@@ -10,6 +10,7 @@ const FLOORS := {
 	"roadN": preload("res://addons/wfc_gen_dock/Assets/roadN.tscn"),
 	"roadW": preload("res://addons/wfc_gen_dock/Assets/roadW.tscn"),
 	"roadE": preload("res://addons/wfc_gen_dock/Assets/roadE.tscn"),
+	"roadS": preload("res://addons/wfc_gen_dock/Assets/roadS.tscn"),
 	"crossroadN": preload("res://addons/wfc_gen_dock/Assets/crossroadN.tscn"),
 	"crossroadS": preload("res://addons/wfc_gen_dock/Assets/crossroadS.tscn"),
 	"crossroadW": preload("res://addons/wfc_gen_dock/Assets/crossroadW.tscn"),

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbdv1mjtsovfu"
-path.s3tc="res://.godot/imported/wfcset06_plastered_wall_03_nor_gl_1k.jpg-06837a2a9d648bd6593d0a4bba895aeb.s3tc.ctex"
+path.s3tc="res://.godot/imported/wfcset06_plastered_wall_03_nor_gl_1k.jpg-e04eb27bc1670e00182916f902524504.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://GLB/wfcset06_plastered_wall_03_nor_gl_1k.jpg"
-dest_files=["res://.godot/imported/wfcset06_plastered_wall_03_nor_gl_1k.jpg-06837a2a9d648bd6593d0a4bba895aeb.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/GLB/wfcset06_plastered_wall_03_nor_gl_1k.jpg"
+dest_files=["res://.godot/imported/wfcset06_plastered_wall_03_nor_gl_1k.jpg-e04eb27bc1670e00182916f902524504.s3tc.ctex"]
 
 [params]
 

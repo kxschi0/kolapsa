@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmiwrhv2xnqk"
-path.s3tc="res://.godot/imported/concretesidewalkDark_diffuse.jpg-9f77fbb82c52b45b49aeeeb867b4fb26.s3tc.ctex"
+path.s3tc="res://.godot/imported/concretesidewalkDark_diffuse.jpg-b65ce1a17e034619b4587a93f3a3f63c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/concretesidewalkDark_diffuse.jpg"
-dest_files=["res://.godot/imported/concretesidewalkDark_diffuse.jpg-9f77fbb82c52b45b49aeeeb867b4fb26.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/Textures/concretesidewalkDark_diffuse.jpg"
+dest_files=["res://.godot/imported/concretesidewalkDark_diffuse.jpg-b65ce1a17e034619b4587a93f3a3f63c.s3tc.ctex"]
 
 [params]
 

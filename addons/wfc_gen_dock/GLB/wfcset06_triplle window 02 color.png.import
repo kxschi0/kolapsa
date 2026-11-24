@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b65w50v65b2p2"
-path.s3tc="res://.godot/imported/wfcset06_triplle window 02 color.png-f9f921193bd38db88e04b37a8e909969.s3tc.ctex"
+path.s3tc="res://.godot/imported/wfcset06_triplle window 02 color.png-67af5abaa4a15658f8aca0241fc08049.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://GLB/wfcset06_triplle window 02 color.png"
-dest_files=["res://.godot/imported/wfcset06_triplle window 02 color.png-f9f921193bd38db88e04b37a8e909969.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/GLB/wfcset06_triplle window 02 color.png"
+dest_files=["res://.godot/imported/wfcset06_triplle window 02 color.png-67af5abaa4a15658f8aca0241fc08049.s3tc.ctex"]
 
 [params]
 

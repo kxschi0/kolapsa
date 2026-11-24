@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://m4who85w652s"
-path.s3tc="res://.godot/imported/unevenAsset_redwall_diff.jpg-cb75d13cf51365d7796c5e421efa7cb7.s3tc.ctex"
+path.s3tc="res://.godot/imported/unevenAsset_redwall_diff.jpg-b3bac6917cace22fb981a744b38c665c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://GLB/unevenAsset_redwall_diff.jpg"
-dest_files=["res://.godot/imported/unevenAsset_redwall_diff.jpg-cb75d13cf51365d7796c5e421efa7cb7.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/GLB/unevenAsset_redwall_diff.jpg"
+dest_files=["res://.godot/imported/unevenAsset_redwall_diff.jpg-b3bac6917cace22fb981a744b38c665c.s3tc.ctex"]
 
 [params]
 

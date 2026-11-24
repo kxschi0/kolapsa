@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmpx7dd0cnejx"
-path.s3tc="res://.godot/imported/terracotta_tiles_Dark_Base_Color.jpg-75fa0bf4c8519999a373c99f9f97b6ca.s3tc.ctex"
+path.s3tc="res://.godot/imported/terracotta_tiles_Dark_Base_Color.jpg-0636cf1211d6ac105b0ec3ae49baf1b9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/terracotta_tiles_Dark_Base_Color.jpg"
-dest_files=["res://.godot/imported/terracotta_tiles_Dark_Base_Color.jpg-75fa0bf4c8519999a373c99f9f97b6ca.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/Textures/terracotta_tiles_Dark_Base_Color.jpg"
+dest_files=["res://.godot/imported/terracotta_tiles_Dark_Base_Color.jpg-0636cf1211d6ac105b0ec3ae49baf1b9.s3tc.ctex"]
 
 [params]
 

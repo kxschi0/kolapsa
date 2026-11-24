@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cp3ko82oh85yp"
-path.s3tc="res://.godot/imported/unevenAsset_white_rough_plaster_diff_1k.jpg-17d699d8dd3488acd9a53f3020fcc9cc.s3tc.ctex"
+path.s3tc="res://.godot/imported/unevenAsset_white_rough_plaster_diff_1k.jpg-f8eaab040f2126c996e6802c9f430904.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://GLB/unevenAsset_white_rough_plaster_diff_1k.jpg"
-dest_files=["res://.godot/imported/unevenAsset_white_rough_plaster_diff_1k.jpg-17d699d8dd3488acd9a53f3020fcc9cc.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/GLB/unevenAsset_white_rough_plaster_diff_1k.jpg"
+dest_files=["res://.godot/imported/unevenAsset_white_rough_plaster_diff_1k.jpg-f8eaab040f2126c996e6802c9f430904.s3tc.ctex"]
 
 [params]
 

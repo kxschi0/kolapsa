@@ -34,9 +34,9 @@ static func validate_numbers(gridsize: int, levels: int, blocks: int, horizontal
 			errors.append("Block size (%d) and road width (%d) are too big for grid size (%d): no room for a street." % [blocks, road_width, gridsize])
 		else:
 			if horizontal_streets > fit:
-				errors.append("Only %d horizontal street(s) fit in grid size %d with block size %d (you asked for %d)." % [fit, gridsize, blocks, horizontal_streets])
+				errors.append("Only %d horizontal street(s) fit in grid size %d with block size %d (user previous input: %d)." % [fit, gridsize, blocks, horizontal_streets])
 			if vertical_streets > fit:
-				errors.append("Only %d vertical street(s) fit in grid size %d with block size %d (you asked for %d)." % [fit, gridsize, blocks, vertical_streets])
+				errors.append("Only %d vertical street(s) fit in grid size %d with block size %d (user previous input:  %d)." % [fit, gridsize, blocks, vertical_streets])
 
 	if build_buildings and (levels < MIN_LEVELS or levels > MAX_LEVELS):
 		errors.append("Max floors must be between %d and %d (it is %d)." % [MIN_LEVELS, MAX_LEVELS, levels])

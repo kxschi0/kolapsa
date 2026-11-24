@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d17jlyjjns0im"
-path.s3tc="res://.godot/imported/wfcCommBldg_Screenshot 2026-10-05 204403.png-77d699242d7b50e151de8c3a3706b3f8.s3tc.ctex"
+path.s3tc="res://.godot/imported/wfcCommBldg_Screenshot 2026-10-05 204403.png-35716ee489ebd401781ff350785686d3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://GLB/wfcCommBldg_Screenshot 2026-10-05 204403.png"
-dest_files=["res://.godot/imported/wfcCommBldg_Screenshot 2026-10-05 204403.png-77d699242d7b50e151de8c3a3706b3f8.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/GLB/wfcCommBldg_Screenshot 2026-10-05 204403.png"
+dest_files=["res://.godot/imported/wfcCommBldg_Screenshot 2026-10-05 204403.png-35716ee489ebd401781ff350785686d3.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btn7l6qmwrvvh"
-path.s3tc="res://.godot/imported/wfcCommBldg_metal04_diffuse.jpg-b0c13f93d5dc735d979e4f92c633c5a3.s3tc.ctex"
+path.s3tc="res://.godot/imported/wfcCommBldg_metal04_diffuse.jpg-2846b767912097cfc9191a24847d7841.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://GLB/wfcCommBldg_metal04_diffuse.jpg"
-dest_files=["res://.godot/imported/wfcCommBldg_metal04_diffuse.jpg-b0c13f93d5dc735d979e4f92c633c5a3.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/GLB/wfcCommBldg_metal04_diffuse.jpg"
+dest_files=["res://.godot/imported/wfcCommBldg_metal04_diffuse.jpg-2846b767912097cfc9191a24847d7841.s3tc.ctex"]
 
 [params]
 

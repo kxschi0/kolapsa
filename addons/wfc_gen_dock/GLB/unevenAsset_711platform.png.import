@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cabr6jml7sis6"
-path.s3tc="res://.godot/imported/unevenAsset_711platform.png-6c4cb7fd95b1890142775e965a10d271.s3tc.ctex"
+path.s3tc="res://.godot/imported/unevenAsset_711platform.png-cef8ba0386d4063c91d889368325dd08.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://GLB/unevenAsset_711platform.png"
-dest_files=["res://.godot/imported/unevenAsset_711platform.png-6c4cb7fd95b1890142775e965a10d271.s3tc.ctex"]
+source_file="res://addons/wfc_gen_dock/GLB/unevenAsset_711platform.png"
+dest_files=["res://.godot/imported/unevenAsset_711platform.png-cef8ba0386d4063c91d889368325dd08.s3tc.ctex"]
 
 [params]
 

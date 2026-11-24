@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://daqmrbp0ibhvy"
-path="res://.godot/imported/unevenAsset.glb-941d588bf82ea3ab7747c21f523b3b76.scn"
+path="res://.godot/imported/unevenAsset.glb-4d77c85edc28462efc23dc731ca62341.scn"
 
 [deps]
 
-source_file="res://GLB/unevenAsset.glb"
-dest_files=["res://.godot/imported/unevenAsset.glb-941d588bf82ea3ab7747c21f523b3b76.scn"]
+source_file="res://addons/wfc_gen_dock/GLB/unevenAsset.glb"
+dest_files=["res://.godot/imported/unevenAsset.glb-4d77c85edc28462efc23dc731ca62341.scn"]
 
 [params]
 

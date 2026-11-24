@@ -42,7 +42,15 @@ func add_temporary(node: Node, folder: String = "", name_text: String = "") -> v
 func clear() -> void:
 	for child in parent.get_children():
 		if child.is_in_group(GROUP):
-			child.queue_free()
+			discard(child)
+
+# Removes a node from the scene RIGHT NOW, then frees it. queue_free() alone keeps the node in the
+# tree until the end of the frame, so a folder with the same name (Floors, Roads...) would be found
+# again and reused, and everything put into it would be thrown away with it.
+static func discard(node: Node) -> void:
+	if node.get_parent() != null:
+		node.get_parent().remove_child(node)
+	node.queue_free()
 
 # The group node called `folder` under the parent. Empty name = the parent itself.
 func _folder(folder: String, saved: bool) -> Node3D:

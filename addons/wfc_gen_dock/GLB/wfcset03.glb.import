@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bhoxrwmjh1d2r"
-path="res://.godot/imported/wfcset03.glb-2bc8cab310d0db18a883e205132c6374.scn"
+path="res://.godot/imported/wfcset03.glb-4b5cb2d90c433f7c1e08eab87c8e5aba.scn"
 
 [deps]
 
-source_file="res://GLB/wfcset03.glb"
-dest_files=["res://.godot/imported/wfcset03.glb-2bc8cab310d0db18a883e205132c6374.scn"]
+source_file="res://addons/wfc_gen_dock/GLB/wfcset03.glb"
+dest_files=["res://.godot/imported/wfcset03.glb-4b5cb2d90c433f7c1e08eab87c8e5aba.scn"]
 
 [params]
 
