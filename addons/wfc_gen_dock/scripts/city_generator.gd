@@ -112,6 +112,9 @@ var last_result: Dictionary = {} # what the last successful run produced
 var _plan: Dictionary = {} # cell -> ground tile name that the last run had to place
 var _force_new_seed: bool = false
 var _retry_same_seed: bool = false # an automatic retry keeps the seed it had
+var generation_ms: int = 0 # how long the last generation took, in milliseconds (FR1.3)
+var ground_ms: int = 0 # of that, the part spent on streets, sidewalks and floor
+var _t_start: int = 0
 
 # What the game window (RunSession) watches while a city is being built.
 var live_solver: WfcSolver
@@ -224,6 +227,7 @@ func _generate() -> void:
 		_say("Can't generate:\n" + "\n".join(errors), 2)
 		return
 
+	_t_start = Time.get_ticks_msec()
 	_clear_scene()
 	_reset_result()
 	_apply_seed()
@@ -260,6 +264,7 @@ func _generate() -> void:
 				await get_tree().create_timer(delay).timeout
 
 	_plan = plan
+	ground_ms = Time.get_ticks_msec() - _t_start
 
 	if not build_buildings:
 		last_result = {"streets_only": true}
@@ -290,13 +295,21 @@ func _finish(ok: bool) -> void:
 		problems = PackedStringArray(["The city could not be finished. See the messages above."])
 		generated.emit(false, problems)
 		return
+	generation_ms = Time.get_ticks_msec() - _t_start
+	if console_output:
+		print("generation time : ", _time_text())
 	var found := validate_current(false)
 	if found.is_empty():
-		_say("City generated and checked: no conflicts (seed %d)." % seed_value, 0)
+		_say("City generated and checked: no conflicts (seed %d). Time: %s." % [seed_value, _time_text()], 0)
 	else:
 		_say("%d conflict(s) found. Export is blocked until you regenerate." % found.size(), 2)
 
 const MAX_RETRIES := 3
+
+# "1.84 s (ground 0.30 s, buildings 1.54 s)". The time includes the waiting of "Watch the city grow" and
+# "Street build delay". Turn those off to measure the work itself.
+func _time_text() -> String:
+	return "%.2f s (ground %.2f s, buildings %.2f s)" % [generation_ms / 1000.0, ground_ms / 1000.0, (generation_ms - ground_ms) / 1000.0]
 
 # Looks at the real nodes in the scene (floors, sidewalks, roads, buildings) and lists what is missing.
 func _placement_problems() -> PackedStringArray:
